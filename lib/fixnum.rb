@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fixnum
   def ordinalize
     if (11..13).include?(abs % 100)
@@ -12,4 +14,3 @@ class Fixnum
     end
   end
 end
-

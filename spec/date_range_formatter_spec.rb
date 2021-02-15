@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "date_range_formatter"
 
 RSpec.describe(DateRangeFormatter) do
@@ -61,4 +63,3 @@ RSpec.describe(DateRangeFormatter) do
     expect(formatter.to_s).to eq("1st November 2009 at 10:00 - 1st December 2010 at 11:00")
   end
 end
-

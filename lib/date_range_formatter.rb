@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "date"
 require "fixnum"
 
@@ -56,4 +58,3 @@ class DateRangeFormatter
     end
   end
 end
-
