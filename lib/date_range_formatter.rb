@@ -11,8 +11,10 @@ class DateRangeFormatter
     @end_date = Date.parse(end_date)
     @start_time = start_time
     @end_time = end_time
-    @full_start_date = format_full_date(@start_date)
-    @full_end_date = format_full_date(@end_date)
+    full_start_date = format_full_date(@start_date)
+    full_end_date = format_full_date(@end_date)
+    @formatted_start_date = format_single_date(full_start_date, start_time)
+    @formatted_end_date = format_single_date(full_end_date, end_time)
   end
 
   def format
@@ -30,18 +32,17 @@ class DateRangeFormatter
   end
 
   def format_same_dates
-    formatted_start_date = format_single_date(@full_start_date, start_time)
     if start_time && end_time
-      "#{formatted_start_date} to #{end_time}"
+      "#{@formatted_start_date} to #{end_time}"
     elsif end_time
-      "#{formatted_start_date} until #{end_time}"
+      "#{@formatted_start_date} until #{end_time}"
     else
-      formatted_start_date
+      @formatted_start_date
     end
   end
 
   def format_different_dates
-    "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
+    "#{@formatted_start_date} - #{@formatted_end_date}"
   end
 
   def format_single_date(date, time)
