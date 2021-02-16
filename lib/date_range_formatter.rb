@@ -17,7 +17,7 @@ class DateRangeFormatter
 
   def format
     if start_date == end_date
-      format_same_date
+      format_same_dates
     else
       format_different_dates
     end
@@ -29,27 +29,35 @@ class DateRangeFormatter
     date.strftime("#{DayOrdinalizer.ordinalize(date.day)} %B %Y")
   end
 
-  def format_same_date
+  def format_same_dates
     if start_time && end_time
-      "#{@full_start_date} at #{start_time} to #{end_time}"
+      "#{format_single_date(@full_start_date, start_time)} to #{end_time}"
     elsif start_time
-      "#{@full_start_date} at #{start_time}"
+      format_single_date(@full_start_date, start_time)
     elsif end_time
-      "#{@full_start_date} until #{end_time}"
+      "#{format_single_date(@full_start_date, start_time)} until #{end_time}"
     else
-      @full_start_date
+      format_single_date(@full_start_date, start_time)
     end
   end
 
   def format_different_dates
     if start_time && end_time
-      "#{@full_start_date} at #{start_time} - #{@full_end_date} at #{end_time}"
+      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
     elsif start_time
-      "#{@full_start_date} at #{start_time} - #{@full_end_date}"
+      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
     elsif end_time
-      "#{@full_start_date} - #{@full_end_date} at #{end_time}"
+      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
     else
-      "#{@full_start_date} - #{@full_end_date}"
+      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
+    end
+  end
+
+  def format_single_date(date, time)
+    if time
+      "#{date} at #{time}"
+    else
+      date
     end
   end
 end
