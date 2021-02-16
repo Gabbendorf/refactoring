@@ -14,8 +14,8 @@ class DateRangeFormatter
   end
 
   def format
-    full_start_date = start_date.strftime("#{DayOrdinalizer.ordinalize(start_date.day)} %B %Y")
-    full_end_date = end_date.strftime("#{DayOrdinalizer.ordinalize(end_date.day)} %B %Y")
+    full_start_date = format_full_date(start_date)
+    full_end_date = format_full_date(end_date)
 
     if start_date == end_date
       if start_time && end_time
@@ -58,5 +58,11 @@ class DateRangeFormatter
         "#{full_start_date} - #{full_end_date}"
       end
     end
+  end
+
+  private
+
+  def format_full_date(date)
+    date.strftime("#{DayOrdinalizer.ordinalize(date.day)} %B %Y")
   end
 end
