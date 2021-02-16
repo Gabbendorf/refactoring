@@ -4,8 +4,6 @@ require "date"
 require "day_ordinalizer"
 
 class DateRangeFormatter
-  attr_reader :start_date, :end_date, :start_time, :end_time
-
   def initialize(start_date, end_date, start_time = nil, end_time = nil)
     @start_date = Date.parse(start_date)
     @end_date = Date.parse(end_date)
@@ -18,7 +16,7 @@ class DateRangeFormatter
   end
 
   def format
-    if start_date == end_date
+    if @start_date == @end_date
       format_same_dates
     else
       format_different_dates
@@ -32,10 +30,10 @@ class DateRangeFormatter
   end
 
   def format_same_dates
-    if start_time && end_time
-      "#{@formatted_start_date} to #{end_time}"
-    elsif end_time
-      "#{@formatted_start_date} until #{end_time}"
+    if @start_time && @end_time
+      "#{@formatted_start_date} to #{@end_time}"
+    elsif @end_time
+      "#{@formatted_start_date} until #{@end_time}"
     else
       @formatted_start_date
     end
