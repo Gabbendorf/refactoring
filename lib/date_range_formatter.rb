@@ -27,16 +27,6 @@ class DateRangeFormatter
       else
         full_start_date
       end
-    elsif start_date.month == end_date.month || start_date.year == end_date.year
-      if start_time && end_time
-        "#{full_start_date} at #{start_time} - #{full_end_date} at #{end_time}"
-      elsif start_time
-        "#{full_start_date} at #{start_time} - #{full_end_date}"
-      elsif end_time
-        "#{full_start_date} - #{full_end_date} at #{end_time}"
-      else
-        "#{full_start_date} - #{full_end_date}"
-      end
     else
       if start_time && end_time
         "#{full_start_date} at #{start_time} - #{full_end_date} at #{end_time}"
