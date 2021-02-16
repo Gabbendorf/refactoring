@@ -16,21 +16,9 @@ class DateRangeFormatter
   end
 
   def format
-    if @start_date == @end_date
-      format_same_dates
-    else
-      format_different_dates
-    end
-  end
-
-  private
-
-  def format_full_date(date)
-    date.strftime("#{DayOrdinalizer.ordinalize(date.day)} %B %Y")
-  end
-
-  def format_same_dates
-    if @start_time && @end_time
+    if @start_date != @end_date
+      "#{@formatted_start_date} - #{@formatted_end_date}"
+    elsif @start_time && @end_time
       "#{@formatted_start_date} to #{@end_time}"
     elsif @end_time
       "#{@formatted_start_date} until #{@end_time}"
@@ -39,8 +27,10 @@ class DateRangeFormatter
     end
   end
 
-  def format_different_dates
-    "#{@formatted_start_date} - #{@formatted_end_date}"
+  private
+
+  def format_full_date(date)
+    date.strftime("#{DayOrdinalizer.ordinalize(date.day)} %B %Y")
   end
 
   def format_single_date(date, time)
