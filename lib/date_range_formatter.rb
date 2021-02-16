@@ -32,8 +32,6 @@ class DateRangeFormatter
   def format_same_dates
     if start_time && end_time
       "#{format_single_date(@full_start_date, start_time)} to #{end_time}"
-    elsif start_time
-      format_single_date(@full_start_date, start_time)
     elsif end_time
       "#{format_single_date(@full_start_date, start_time)} until #{end_time}"
     else
@@ -42,15 +40,7 @@ class DateRangeFormatter
   end
 
   def format_different_dates
-    if start_time && end_time
-      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
-    elsif start_time
-      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
-    elsif end_time
-      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
-    else
-      "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
-    end
+    "#{format_single_date(@full_start_date, start_time)} - #{format_single_date(@full_end_date, end_time)}"
   end
 
   def format_single_date(date, time)
