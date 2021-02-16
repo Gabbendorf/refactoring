@@ -32,7 +32,7 @@ RSpec.describe(DateRangeFormatter) do
 
     formatted_date_range = formatter.format
 
-    expect(formatted_date_range).to eq("1st - 3rd November 2009")
+    expect(formatted_date_range).to eq("1st November 2009 - 3rd November 2009")
   end
 
   it "formats a date range for the same month with starting time" do
@@ -56,7 +56,7 @@ RSpec.describe(DateRangeFormatter) do
 
     formatted_date_range = formatter.format
 
-    expect(formatted_date_range).to eq("1st November - 1st December 2009")
+    expect(formatted_date_range).to eq("1st November 2009 - 1st December 2009")
   end
 
   it "formats a date range for the same year with starting time" do
