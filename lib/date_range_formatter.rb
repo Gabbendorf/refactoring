@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "date"
-require "fixnum"
+require "day_ordinalizer"
 
 class DateRangeFormatter
   attr_reader :start_date, :end_date, :start_time, :end_time
@@ -14,8 +14,8 @@ class DateRangeFormatter
   end
 
   def format
-    full_start_date = start_date.strftime("#{start_date.day.ordinalize} %B %Y")
-    full_end_date = end_date.strftime("#{end_date.day.ordinalize} %B %Y")
+    full_start_date = start_date.strftime("#{DayOrdinalizer.ordinalize(start_date.day)} %B %Y")
+    full_end_date = end_date.strftime("#{DayOrdinalizer.ordinalize(end_date.day)} %B %Y")
 
     if start_date == end_date
       if start_time && end_time
@@ -35,7 +35,7 @@ class DateRangeFormatter
       elsif end_time
         "#{full_start_date} - #{full_end_date} at #{end_time}"
       else
-        start_date.strftime("#{start_date.day.ordinalize} %B %Y - #{end_date.day.ordinalize} %B %Y")
+        start_date.strftime("#{DayOrdinalizer.ordinalize(start_date.day)} %B %Y - #{DayOrdinalizer.ordinalize(end_date.day)} %B %Y")
       end
     elsif start_date.year == end_date.year
       if start_time && end_time
@@ -45,7 +45,7 @@ class DateRangeFormatter
       elsif end_time
         "#{full_start_date} - #{full_end_date} at #{end_time}"
       else
-        start_date.strftime("#{start_date.day.ordinalize} %B %Y - ") + end_date.strftime("#{end_date.day.ordinalize} %B %Y")
+        start_date.strftime("#{DayOrdinalizer.ordinalize(start_date.day)} %B %Y - ") + end_date.strftime("#{DayOrdinalizer.ordinalize(end_date.day)} %B %Y")
       end
     else
       if start_time && end_time
