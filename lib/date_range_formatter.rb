@@ -35,7 +35,7 @@ class DateRangeFormatter
       elsif end_time
         "#{full_start_date} - #{full_end_date} at #{end_time}"
       else
-        start_date.strftime("#{DayOrdinalizer.ordinalize(start_date.day)} %B %Y - #{DayOrdinalizer.ordinalize(end_date.day)} %B %Y")
+        start_date.strftime("#{DayOrdinalizer.ordinalize(start_date.day)} %B %Y - ") + end_date.strftime("#{DayOrdinalizer.ordinalize(end_date.day)} %B %Y")
       end
     elsif start_date.year == end_date.year
       if start_time && end_time
