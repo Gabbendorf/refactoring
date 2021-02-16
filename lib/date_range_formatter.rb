@@ -11,7 +11,7 @@ class DateRangeFormatter
     @end_time = end_time
   end
 
-  def to_s
+  def format
     full_start_date = @start_date.strftime("#{@start_date.day.ordinalize} %B %Y")
     full_end_date = @end_date.strftime("#{@end_date.day.ordinalize} %B %Y")
 
