@@ -30,12 +30,13 @@ class DateRangeFormatter
   end
 
   def format_same_dates
+    formatted_start_date = format_single_date(@full_start_date, start_time)
     if start_time && end_time
-      "#{format_single_date(@full_start_date, start_time)} to #{end_time}"
+      "#{formatted_start_date} to #{end_time}"
     elsif end_time
-      "#{format_single_date(@full_start_date, start_time)} until #{end_time}"
+      "#{formatted_start_date} until #{end_time}"
     else
-      format_single_date(@full_start_date, start_time)
+      formatted_start_date
     end
   end
 
