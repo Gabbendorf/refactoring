@@ -19,3 +19,19 @@ date range as "1st November 2009 - 3rd November 2010" but actually returns
 Find and fix the bug, writing tests if need be and refactor the code as you
 see fit.
 
+## Development
+
+#### To initialise the project
+`bundle install`
+
+#### To run all tests and rubocop
+`bundle exec rake`
+
+#### To run only tests
+`bundle exec rake spec`
+
+#### To run only rubocop
+`bundle exec rake lint`
+
+#### To run tests of one single file
+`bundle exec rspec spec/path/to/file_spec.rb`
