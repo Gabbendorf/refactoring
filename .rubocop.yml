@@ -3,3 +3,9 @@ StringLiterals:
 
 Style/Documentation:
   Enabled: false
+
+BlockComments:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
